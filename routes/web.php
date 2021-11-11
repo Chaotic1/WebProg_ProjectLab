@@ -33,4 +33,8 @@ Route::prefix('/admin')->group(function(){
     Route::get('/setting', function () {
         echo "Admin Setting Page";
     });
+
+    Route::get('/hello', function () {
+        echo "bisa ga?";
+    });
 });
