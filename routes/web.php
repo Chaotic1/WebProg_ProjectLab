@@ -35,6 +35,6 @@ Route::prefix('/admin')->group(function(){
     });
 
     Route::get('/hello', function () {
-        echo "bisa ga?";
+        echo "Iya, bisa";
     });
 });
