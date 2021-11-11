@@ -31,7 +31,7 @@
         </div>
       
         <div class="container register">
-          <p>Don't have an account? <a href="/">Register</a>.</p>
+          <p>Don't have an account yet? <a href="/">Register</a>.</p>
         </div>
       </form>
 </body>
