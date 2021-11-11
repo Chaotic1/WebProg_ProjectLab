@@ -20,3 +20,17 @@ Route::get('/', function () {
 Route::get('/signin', function(){
     return view('signIn');
 });
+
+Route::get('/users/{id}', function ($id) {
+    return 'This is the page of User '.$id;
+});
+
+Route::prefix('/admin')->group(function(){
+    Route::get('/home', function () {
+        echo "Admin Home Page";
+    });
+
+    Route::get('/setting', function () {
+        echo "Admin Setting Page";
+    });
+});
