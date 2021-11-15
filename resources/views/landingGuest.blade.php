@@ -8,11 +8,11 @@
     <link rel="stylesheet" href= {{ asset('css/bootstrap.min.css') }}>
 </head>
 <body>
-    <div class="container">
-        <div class="alert alert-success mt-5" role="alert">
-            Boostrap 5 is working!
-        </div>    
-    </div>
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+        <div class="container-fluid">
+            
+        </div>
+    </nav>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 </body>
 </html>
