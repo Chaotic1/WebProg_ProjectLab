@@ -30,6 +30,10 @@ Route::get('/landGuest', function () {
     return view('landingGuest');
 });
 
+Route::get('/landMember', function () {
+    return view('landingMember');
+});
+
 
 
 Route::prefix('/admin')->group(function(){
