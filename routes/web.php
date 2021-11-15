@@ -46,7 +46,7 @@ Route::prefix('/admin')->group(function(){
     });
     
     Route::get('/landing', function () {
-        return view('landing');
+        return view('landingAdmin');
     });
 
 });

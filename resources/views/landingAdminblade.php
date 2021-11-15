@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Book Store</title>
-    <link rel="stylesheet" href= {{ asset('css/bootstrap.min.css') }}>
+    <link rel="stylesheet" href={{ asset('css/bootstrap.min.css') }}>
 </head>
-<body>
-    {{-- Navbar --}}
+    <{{-- Navbar --}}
     <nav class="navbar navbar-expand-md navbar-dark bg-primary">
         <div class="container-fluid">
             <a href="#" class="navbar-brand align-center">Book Store</a>
@@ -29,7 +28,6 @@
         </div>
     </nav>
 
-    
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 </body>
 </html>
