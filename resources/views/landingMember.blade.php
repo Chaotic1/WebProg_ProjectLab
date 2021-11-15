@@ -38,6 +38,20 @@
         </div>
     </nav>
 
+    {{-- content --}}
+
+
+    {{-- footer --}}
+    <nav class="navbar navbar-dark bg-primary fixed-bottom">
+        <div class="container-fluid text-white">
+            <p>
+                @php
+                    echo "Current Date and Time: " . date('l') . ", " . date('m-d-Y');
+                @endphp
+            </p>
+        </div>
+    </nav>
+
     
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 </body>
