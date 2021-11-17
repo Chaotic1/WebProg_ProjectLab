@@ -34,6 +34,14 @@ Route::get('/landMember', function () {
     return view('landingMember');
 });
 
+Route::get('/login', function () {
+    return view('login');
+});
+
+Route::get('/register', function () {
+    return view('Register');
+});
+
 
 
 Route::prefix('/admin')->group(function(){

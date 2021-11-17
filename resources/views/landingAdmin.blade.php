@@ -39,7 +39,10 @@
     </nav>
 
     {{-- content --}}
+    <div class="container-md">
+        @yield('content')
 
+    </div>
 
     {{-- footer --}}
     <nav class="navbar navbar-dark bg-primary fixed-bottom">

@@ -29,6 +29,10 @@
         </div>
     </nav>
     {{-- content --}}
+    <div class="container-md">
+        @yield('content')
+
+    </div>
 
 
     {{-- footer --}}
