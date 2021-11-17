@@ -1,7 +1,7 @@
 @extends('landingGuest')
 @section('content')
     <div class="justify-center align-center">
-        <h2 class="fw-bold">Login</h2>
+        <h2 class="fw-bold">Register</h2>
         <form>
             <div class="mb-3">
                 <label for="emailMember" class="form-label">Email Address</label>
