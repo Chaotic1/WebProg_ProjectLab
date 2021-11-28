@@ -26,10 +26,10 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle px-3" href="#" id="navbarAccLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span class="text-white">Hello, Member</span>
+                            <span class="text-white">Hello ...</span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarAccLink">
-                            <li><a href="#" class="dropdown-item">Change<br>Password</a></li>
+                            <li><a href="#" class="dropdown-item">Change Password</a></li>
                             <li><a href="#" class="dropdown-item">Logout</a></li>
                         </ul>
                     </li>
