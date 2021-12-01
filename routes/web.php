@@ -25,6 +25,10 @@ Route::get('/guestpage', [PageController::class, 'guest']);
 Route::get('/memberpage', [PageController::class, 'member']);
 Route::get('/adminpage', [PageController::class, 'admin']);
 
+Route::get('/manageBook', function () {
+    return view("manage");
+});
+
 
 // Route::prefix('/admin')->group(function(){
 //     Route::get('/home', function () {
