@@ -12,6 +12,9 @@
                     Desc: {{ $book->description }}<br>
                     Auhtor: {{ $book->author }}<br>
                     Price: {{ "Rp.".$book->price }}<br>
+                    @foreach ($book->genre as $genre)
+                    Genre: {{ $genre->name }}
+                    @endforeach
                 </td>
             </tr>           
         @endforeach
