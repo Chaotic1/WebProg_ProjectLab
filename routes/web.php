@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\PageController;
+use App\Models\Book;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,27 +27,7 @@ Route::get('/guestpage', [PageController::class, 'guest']);
 Route::get('/memberpage', [PageController::class, 'member']);
 Route::get('/adminpage', [PageController::class, 'admin']);
 
-Route::get('/manageBook', function () {
-    return view("manage");
-});
-
-
-// Route::prefix('/admin')->group(function(){
-//     Route::get('/home', function () {
-//         echo "Admin Home Page";
-//     });
-
-//     Route::get('/setting', function () {
-//         echo "Admin Setting Page";
-//     });
-
-//     Route::get('/hello', function () {
-//         echo "Iya, bisa";
-//     });
-    
-//     Route::get('/landing', function () {
-//         return view('landingAdmin');
-//     });
-
-// });
+Route::get('/manageBook', [BookController::class, 'index']);
+Route::post('/create', [BookController::class, 'create']);
+Route::get('/show', [BookController::class, 'show']);
 
