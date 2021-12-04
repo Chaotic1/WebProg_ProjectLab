@@ -15,7 +15,7 @@ class BookController extends Controller
         return view('manage', compact(['books', 'genres']));
     }
 
-    public function create(Request $req){
+    public function insert(Request $req){
 
         //dd($req);
 
@@ -29,15 +29,23 @@ class BookController extends Controller
         $book->author = $req->author;
         $book->price = $req->price;
         $book->cover = 'images/'.$imageName;
-        $book->genre_id = $req->genre[0];
+        //$book->genre_id = $req->genre[0];
 
         $book->save();
+
+        $book->genre()->sync($req->genre);
 
         return redirect()->back();
     }
 
-    public function show(){
+    public function display(){
         $books = Book::all();
         return view('show', compact('books'));
+    }
+
+    public function details($id){
+        $books = Book::find($id);
+        $genres = Genre::all();
+        return view('detailAdmin', compact('books', 'genres'));
     }
 }

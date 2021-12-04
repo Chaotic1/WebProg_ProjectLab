@@ -3,7 +3,7 @@
 
 <div>
     <h3>Insert Book</h3>
-    <form action="/create" method="POST" enctype="multipart/form-data">
+    <form action="/insert" method="POST" enctype="multipart/form-data">
         @csrf
         <label for="titleInsert">Title</label><br>
         <input id="titleInsert" type="text" name="title" placeholder="Title"><br>
@@ -29,7 +29,6 @@
         <input id="priceInsert" type="number" name="price" min="1"><br>
         <br>
         <button type="submit">Submit</button>
-        {{-- <input type="submit" value="Submit"><br> --}}
     </form>
 </div>
 

@@ -28,6 +28,6 @@ Route::get('/memberpage', [PageController::class, 'member']);
 Route::get('/adminpage', [PageController::class, 'admin']);
 
 Route::get('/manageBook', [BookController::class, 'index']);
-Route::post('/create', [BookController::class, 'create']);
-Route::get('/show', [BookController::class, 'show']);
-
+Route::post('/insert', [BookController::class, 'insert']);
+Route::get('/display', [BookController::class, 'display']);
+Route::get('/detail/{id}', [BookController::class, 'details']);
