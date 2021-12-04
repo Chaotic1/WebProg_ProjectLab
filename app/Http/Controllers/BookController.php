@@ -29,7 +29,6 @@ class BookController extends Controller
         $book->author = $req->author;
         $book->price = $req->price;
         $book->cover = 'images/'.$imageName;
-        //$book->genre_id = $req->genre[0];
 
         $book->save();
 
@@ -47,5 +46,40 @@ class BookController extends Controller
         $books = Book::find($id);
         $genres = Genre::all();
         return view('detailAdmin', compact('books', 'genres'));
+    }
+
+    public function edit($id){
+        $books = Book::find($id);
+        $genres = Genre::all();
+        return view('editAdmin', compact(['books', 'genres']));
+    }
+
+    public function update(Request $req){
+
+        $file = $req->file('image');
+
+        $book = Book::find($req->id);
+        echo collect($req->all());
+        $book->title = $req->title != null ? $req->title : $book->title;
+        $book->description = $req->description != null ? $req->description : $book->description;
+        $book->author = $req->author != null ? $req->author : $book->author;
+        $book->price = $req->price != null ? $req->price : $book->price;
+
+        if($file != null){
+            $imageName = time().".".$file->getClientOriginalExtension();
+            Storage::putFileAs('public/images', $file, $imageName);
+
+            Storage::delete('public/'.$book->cover);
+            $book->cover = 'images/'.$imageName;
+        }
+        else{
+            $book->cover = $book->cover;
+        }
+
+        $book->save();
+
+        $book->genre()->sync($req->genre);
+
+        return redirect()->back();
     }
 }

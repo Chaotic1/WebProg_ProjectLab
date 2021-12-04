@@ -31,3 +31,5 @@ Route::get('/manageBook', [BookController::class, 'index']);
 Route::post('/insert', [BookController::class, 'insert']);
 Route::get('/display', [BookController::class, 'display']);
 Route::get('/detail/{id}', [BookController::class, 'details']);
+Route::get('/edit/{id}', [BookController::class, 'edit']);
+Route::put('/update/{id}', [BookController::class, 'update']);
