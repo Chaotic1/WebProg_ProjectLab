@@ -1,4 +1,4 @@
-@extends('landingAdmin')
+@extends('landingGuest')
 @section('content')
     
     <div>
@@ -11,8 +11,17 @@
         @foreach ($books->genre as $genre) 
             {{ $genre->name }} 
         @endforeach
+        <br>
     </div>
-    <div>
+    {{-- <div>
+        <form action="" method="">
+            <label for="priceInsert">Quantity</label><br>
+            <input id="priceInsert" type="number" name="quantity" min="1"><br>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    </div> --}}
+    {{-- <div>
         <a href="/edit/{{ $books->id }}">Edit &rarr;</a>
     </div>
     <div>
@@ -21,6 +30,6 @@
             @csrf
             <input type="submit" name="delete" value="Delete">
         </form>
-    </div>
+    </div> --}}
     
 @endsection

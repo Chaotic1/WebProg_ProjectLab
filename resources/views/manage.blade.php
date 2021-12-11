@@ -10,7 +10,7 @@
         <label for="descriptionInsert">Description</label><br>
         <input id="descriptionInsert" type="text" name="description" placeholder="Description"><br>
         <label for="authorInsert">Author</label><br>
-        <input id="authorInsert" type="text" name="author" placeholder="Author"><br>
+        <input id="authorInsert" type="textarea" name="author" placeholder="Author"><br>
         <label for="bookCoverInsert">Cover</label><br>
         <input id="bookCoverInsert" type="file" name="image"><br>
 

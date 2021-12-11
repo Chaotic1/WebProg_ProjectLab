@@ -59,7 +59,6 @@ class BookController extends Controller
         $file = $req->file('image');
 
         $book = Book::find($req->id);
-        echo collect($req->all());
         $book->title = $req->title != null ? $req->title : $book->title;
         $book->description = $req->description != null ? $req->description : $book->description;
         $book->author = $req->author != null ? $req->author : $book->author;
@@ -80,6 +79,14 @@ class BookController extends Controller
 
         $book->genre()->sync($req->genre);
 
-        return redirect()->back();
+        return redirect('/display');
+    }
+
+    public function delete($id){
+        $book = Book::find($id);
+        Storage::delete('public/'.$book->cover);
+        $book->genre()->detach($id);
+        $book->delete();
+        return redirect('/display');
     }
 }
