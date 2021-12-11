@@ -40,7 +40,7 @@ Route::get('/display', [BookController::class, 'display']);
 Route::get('/detail/{id}', [BookController::class, 'details']);
 Route::get('/edit/{id}', [BookController::class, 'edit']);
 Route::put('/update/{id}', [BookController::class, 'update']);
-Route::delete('/detail/{$id}', [BookController::class, 'delete']);
+Route::delete('/detail/{id}', [BookController::class, 'delete']);
 
 Route::get('/manageGenre', [GenreController::class, 'index']);
 Route::post('/insertGenre', [GenreController::class, 'insert']);
