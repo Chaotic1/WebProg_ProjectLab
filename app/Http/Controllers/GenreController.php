@@ -33,12 +33,21 @@ class GenreController extends Controller
 
     public function update(Request $req){
         $genre = Genre::find($req->id);
-        $genre->name = $req->name != null ? $req->name : $genre->title;
+        $book = Book::all();
 
-        $genre->save();
+        if($genre->name == $req->name){
+            $genre->name = $genre->name;
+        }
+        else{
 
-        $genre->book()->sync($req->book);
+            $genre->name = $req->name != null ? $req->name : $genre->name;
 
+            $genre->save();
+
+            $genre->book()->sync($req->book);
+
+        }
+        
         return redirect()->back();
     }
 
