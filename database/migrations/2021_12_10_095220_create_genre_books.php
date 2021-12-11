@@ -17,8 +17,8 @@ class CreateGenreBooks extends Migration
             $table->id();
             $table->foreignId('genre_id');
             $table->foreignId('book_id');
-            $table->foreign('genre_id')->references('id')->on('genres')->onDelete('cascade');
-            $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
+            $table->foreign('genre_id')->references('id')->on('genres')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
