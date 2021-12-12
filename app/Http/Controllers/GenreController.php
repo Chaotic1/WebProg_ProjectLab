@@ -14,10 +14,14 @@ class GenreController extends Controller
     }
 
     public function insert(Request $req){
-        $genre = new Genre();
-        $genre->name = $req->name;
+        // $genre = new Genre();
+        // $genre->name = $req->name;
 
-        $genre->save();
+        // $genre->save();
+
+        $genre = Genre::create([
+            'name' => $req->name
+        ]);
 
         $genre->book()->sync($req->book);
 
