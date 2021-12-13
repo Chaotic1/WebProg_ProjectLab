@@ -17,8 +17,8 @@
     </div>
     <div>
         <form action="/detail/{{ $books->id }}" method="POST">
-            @method('DELETE')
             @csrf
+            @method('DELETE')
             <input type="submit" name="delete" value="Delete">
         </form>
     </div>

@@ -42,8 +42,6 @@ class BookController extends Controller
             'cover' => 'images/'.$imageName
         ]);
 
-        $book->save();
-
         $book->genre()->sync($req->genre);
 
         return redirect()->back();
