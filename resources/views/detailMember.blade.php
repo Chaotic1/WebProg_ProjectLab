@@ -2,6 +2,7 @@
 @section('content')
     
     <div>
+        <form action="" method="POST" enctype="multipart/form-data">
         <img width="200px" height="200px" src="{{ Storage::url($books->cover) }}" alt=""><br>
         Title      : {{ $books->title }} <br>
         Author     : {{ $books->author }} <br>
@@ -12,9 +13,7 @@
             {{ $genre->name }} 
         @endforeach
         <br>
-    </div>
-    <div>
-        <form action="" method="">
+        
             <label for="priceInsert">Quantity</label><br>
             <input id="priceInsert" type="number" name="quantity" min="1"><br>
             <br>

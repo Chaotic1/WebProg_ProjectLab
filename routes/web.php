@@ -8,6 +8,8 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PageController;
 use App\Models\Book;
 use App\Models\Genre;
+use GuzzleHttp\Middleware;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,36 +27,41 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
-Route::get('/register', [PageController::class, 'register']);
-Route::get('/guestpage', [PageController::class, 'guest']);
-Route::get('/memberpage', [PageController::class, 'member']);
-Route::get('/adminpage', [PageController::class, 'admin']);
+// Route::get('/guestpage', [PageController::class, 'guest']);
+// Route::get('/memberpage', [PageController::class, 'member']);
+// Route::get('/adminpage', [PageController::class, 'admin']);
 
 
 //Admin Stuff
-Route::get('/manageBook', [BookController::class, 'index']);
-Route::post('/insert', [BookController::class, 'insert']);
-Route::get('/display', [BookController::class, 'display']);
-Route::get('/detail/{id}', [BookController::class, 'details']);
-Route::get('/edit/{id}', [BookController::class, 'edit']);
-Route::put('/update/{id}', [BookController::class, 'update']);
-Route::delete('/detail/{id}', [BookController::class, 'delete']);
 
-Route::get('/manageGenre', [GenreController::class, 'index']);
-Route::post('/insertGenre', [GenreController::class, 'insert']);
-Route::get('/manageGenre/detail/{id}', [GenreController::class, 'details']);
-Route::put('/updateGenre/{id}', [GenreController::class, 'update']);
+Route::middleware('role:admin')->group(function(){
+    Route::get('/manageBook', [BookController::class, 'index']);
+    Route::post('/insert', [BookController::class, 'insert']);
+    Route::get('/display', [BookController::class, 'display']);
+    Route::get('/detail/{id}', [BookController::class, 'details']);
+    Route::get('/edit/{id}', [BookController::class, 'edit']);
+    Route::put('/update/{id}', [BookController::class, 'update']);
+    Route::delete('/detail/{id}', [BookController::class, 'delete']);
+    Route::get('/manageGenre', [GenreController::class, 'index']);
+    Route::post('/insertGenre', [GenreController::class, 'insert']);
+    Route::get('/manageGenre/detail/{id}', [GenreController::class, 'details']);
+    Route::put('/updateGenre/{id}', [GenreController::class, 'update']);
+});
+
+Route::get('/logout', [AuthController::class, 'logout']);
 
 //Member Stuff
-Route::get('displayMember', [MemberController::class, 'index']);
-Route::get('member/detail/{id}', [MemberController::class, 'details']);
+Route::middleware('role:member')->group(function(){
+    Route::get('displayMember', [MemberController::class, 'index']);
+    Route::get('member/detail/{id}', [MemberController::class, 'details']);
+});
 
-//Guest Stuff
-Route::get('displayGuest', [GuestController::class, 'index']);
-Route::get('guest/detail/{id}', [GuestController::class, 'details']);
 
-//Login and register stuff
-Route::get('/login', [AuthController::class, 'loginPage']);
-Route::post('login', [AuthController::class, 'login']);
+
+//Login and register stuff (Available for guest only)
+Route::get('/login', [AuthController::class, 'loginPage'])->middleware('guest');
+Route::post('/login', [AuthController::class, 'login'])->middleware('guest');
+Route::get('/register', [AuthController::class, 'registerPage'])->middleware('guest');
+Route::post('/register', [AuthController::class, 'register'])->middleware('guest');
+Route::get('displayGuest', [GuestController::class, 'index'])->middleware('guest');
+Route::get('guest/detail/{id}', [GuestController::class, 'details'])->middleware('guest');

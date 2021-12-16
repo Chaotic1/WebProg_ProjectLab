@@ -1,6 +1,8 @@
 @extends('landingAdmin')
 @section('content')
 
+{{ Auth::user()->role }}
+
 <div>
     <table>
     <tbody>

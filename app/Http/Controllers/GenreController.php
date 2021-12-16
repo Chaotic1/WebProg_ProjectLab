@@ -14,10 +14,6 @@ class GenreController extends Controller
     }
 
     public function insert(Request $req){
-        // $genre = new Genre();
-        // $genre->name = $req->name;
-
-        // $genre->save();
 
         $genre = Genre::create([
             'name' => $req->name
@@ -31,13 +27,11 @@ class GenreController extends Controller
     public function details($id){
         $genres = Genre::find($id);
         $books = Book::all();
-        //dd($genres->book);
         return view('genreDetail', compact(['genres', 'books']));
     }
 
     public function update(Request $req){
         $genre = Genre::find($req->id);
-        //dd($genre);
         $genre->first()->update([
             'name' => $req->name
         ]);
@@ -45,16 +39,6 @@ class GenreController extends Controller
         if($genre->name == $req->name){
             $genre->name = $genre->name;
         }
-        
-        // else{
-
-        //     $genre->name = $req->name != null ? $req->name : $genre->name;
-
-        //     //$genre->save();
-
-        //     //$genre->book()->sync($req->book);
-
-        // }
         
         return redirect()->back();
     }

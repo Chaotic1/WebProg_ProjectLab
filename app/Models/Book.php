@@ -13,6 +13,10 @@ class Book extends Model
         return $this->belongsToMany(Genre::class);
     }
 
+    public function cart(){
+        return $this->hasMany(Cart::class);
+    }
+
     protected $fillable = [
         'title', 'description', 'author', 'price', 'cover'
     ];

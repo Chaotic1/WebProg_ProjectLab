@@ -21,5 +21,13 @@
             <button type="submit" class="btn btn-primary">Login</button>
         </form>
     </div>
+
+    <div>
+        @if(session()->has('message'))
+            <div class="alert alert-danger">
+                {{ session()->get('message') }}
+            </div>
+        @endif
+    </div>
     
 @endsection

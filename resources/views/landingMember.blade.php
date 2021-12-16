@@ -30,7 +30,9 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarAccLink">
                             <li><a href="#" class="dropdown-item">Change<br>Password</a></li>
-                            <li><a href="#" class="dropdown-item">Logout</a></li>
+                            <form action="/logout" method="GET">
+                                <li><a href="/logout" class="dropdown-item">Logout</a></li>
+                            </form>
                         </ul>
                     </li>
                 </ul>

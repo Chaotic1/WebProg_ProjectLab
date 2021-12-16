@@ -2,6 +2,8 @@
 
 @section('content')
 
+{{ Auth::user()->role }}
+
 <div>
     <table>
     <tbody>
@@ -16,6 +18,14 @@
         @endforeach
     </tbody>
     </table>
+</div>
+
+<div>
+    {{-- @if(session()->has('message'))
+        <div class="alert alert-danger">
+            {{ session()->get('message') }}
+        </div>
+    @endif --}}
 </div>
 
 @endsection
