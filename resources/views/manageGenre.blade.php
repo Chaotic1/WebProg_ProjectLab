@@ -35,8 +35,10 @@
                         
                     <a href="manageGenre/detail/{{ $genre->id }}">{{ $genre->name }}</a>
                          
-                    <form action="">
-                        Delete &rarr; 
+                    <form action="/manageGenre/delete/{{ $genre->id }}" method="POST">
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit">Delete</button> 
                     </form>
                     <br>
                     @endforeach

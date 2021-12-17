@@ -63,6 +63,12 @@ class AuthController extends Controller
         }
     }
 
+    public function resetPass(){
+        $user = Auth::user();
+
+        
+    }
+
     public function logout(){
         Auth::logout();
         return view('login');

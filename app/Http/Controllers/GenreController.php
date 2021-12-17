@@ -44,6 +44,8 @@ class GenreController extends Controller
     }
 
     public function delete($id){
-
+        $genres = Genre::find($id);
+        $genres->delete();
+        return redirect()->back();
     }
 }

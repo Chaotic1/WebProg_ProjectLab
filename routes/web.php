@@ -7,7 +7,9 @@ use App\Http\Controllers\GenreController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\TransactionController;
 use App\Models\Book;
+use App\Models\DetailTransactions;
 use App\Models\Genre;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Auth;
@@ -47,6 +49,7 @@ Route::middleware('role:admin')->group(function(){
     Route::post('/insertGenre', [GenreController::class, 'insert']);
     Route::get('/manageGenre/detail/{id}', [GenreController::class, 'details']);
     Route::put('/updateGenre/{id}', [GenreController::class, 'update']);
+    Route::delete('/manageGenre/delete/{id}', [GenreController::class, 'delete']);
 });
 
 Route::get('/logout', [AuthController::class, 'logout']);
@@ -60,9 +63,11 @@ Route::middleware('role:member')->group(function(){
     Route::get('/update/member/detail/{id}', [MemberController::class, 'edit']);
     Route::put('/update/member/detail/{id}', [CartController::class, 'update']);
     Route::delete('/cart/delete/{id}', [CartController::class, 'delete']);
+    Route::post('/checkout', [CartController::class, 'checkout']);
+    Route::get('/history', [TransactionController::class, 'showHistory']);
+    Route::get('/history/detail/{id}', [TransactionController::class, 'showHistoryDetails']);
+    Route::get('/history/detail/book/{id}', [TransactionController::class, 'bookDetail']);
 });
-
-
 
 //Login and register stuff (Available for guest only)
 Route::get('/login', [AuthController::class, 'loginPage'])->middleware('guest');

@@ -19,7 +19,8 @@
     <br>
     <h4>Grand Total: {{ $carts->grand_total }}</h4>
     <div>
-        <form action="">
+        <form action="/checkout" method="POST" enctype="multipart/form-data">
+            @csrf
             <button type="submit">Checkout</button>
         </form>
     </div>
