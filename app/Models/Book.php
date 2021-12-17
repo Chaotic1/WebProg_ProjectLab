@@ -13,7 +13,7 @@ class Book extends Model
         return $this->belongsToMany(Genre::class);
     }
 
-    public function cart(){
+    public function cartDetail(){
         return $this->hasMany(Cart::class);
     }
 

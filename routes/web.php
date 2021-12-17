@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\MemberController;
@@ -52,8 +53,13 @@ Route::get('/logout', [AuthController::class, 'logout']);
 
 //Member Stuff
 Route::middleware('role:member')->group(function(){
-    Route::get('displayMember', [MemberController::class, 'index']);
-    Route::get('member/detail/{id}', [MemberController::class, 'details']);
+    Route::get('/displayMember', [MemberController::class, 'index']);
+    Route::get('/member/detail/{id}', [MemberController::class, 'details']);
+    Route::post('/member/detail/{id}', [CartController::class, 'insert']);
+    Route::get('/cart', [CartController::class, 'index']);
+    Route::get('/update/member/detail/{id}', [MemberController::class, 'edit']);
+    Route::put('/update/member/detail/{id}', [CartController::class, 'update']);
+    Route::delete('/cart/delete/{id}', [CartController::class, 'delete']);
 });
 
 
@@ -63,5 +69,5 @@ Route::get('/login', [AuthController::class, 'loginPage'])->middleware('guest');
 Route::post('/login', [AuthController::class, 'login'])->middleware('guest');
 Route::get('/register', [AuthController::class, 'registerPage'])->middleware('guest');
 Route::post('/register', [AuthController::class, 'register'])->middleware('guest');
-Route::get('displayGuest', [GuestController::class, 'index'])->middleware('guest');
-Route::get('guest/detail/{id}', [GuestController::class, 'details'])->middleware('guest');
+Route::get('/displayGuest', [GuestController::class, 'index'])->middleware('guest');
+Route::get('/guest/detail/{id}', [GuestController::class, 'details'])->middleware('guest');

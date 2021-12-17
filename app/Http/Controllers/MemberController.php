@@ -18,4 +18,10 @@ class MemberController extends Controller
         $genres = Genre::all();
         return view('detailMember', compact('books', 'genres'));
     }
+
+    public function edit($id){
+        $books = Book::find($id);
+        $genres = Genre::all();
+        return view('updateCart', compact('books', 'genres'));
+    }
 }

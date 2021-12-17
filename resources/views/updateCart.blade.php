@@ -2,7 +2,8 @@
 @section('content')
     
     <div>
-        <form action="/member/detail/{{ $books->id }}" method="POST" enctype="multipart/form-data">
+        <form action="/update/member/detail/{{ $books->id }}" method="POST">
+        @method('PUT')
         @csrf
         <img width="200px" height="200px" src="{{ Storage::url($books->cover) }}" alt=""><br>
         Title      : {{ $books->title }} <br>
@@ -18,7 +19,7 @@
             <label for="bookAmount">Quantity</label><br>
             <input id="bookAmount" type="number" name="quantity" min="1" value="1"><br>
             <br>
-            <button type="submit">Submit</button>
+            <button type="submit">Update</button>
         </form>
     </div>
 @endsection

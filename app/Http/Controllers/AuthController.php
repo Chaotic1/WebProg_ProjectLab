@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,11 +21,17 @@ class AuthController extends Controller
     public function register(Request $req){
 
         if($req->password == $req->confirm){
-            $user = User::insert([
+            $user = User::create([
                 'name' => $req->name,
                 'email' => $req->email,
                 'password' => bcrypt($req->password)
             ]);
+
+            $cart = Cart::create([
+                'user_id' => $user->id,
+                'grand_total' => 0
+            ]);
+
             return redirect()->back();
         }
 
