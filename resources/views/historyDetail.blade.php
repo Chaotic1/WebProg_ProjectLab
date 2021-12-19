@@ -2,7 +2,7 @@
 
 @section('content')
 
-
+{{-- Bagian ini lanjutan dari transaction, dimana member bisa liat seluruh buku yang di beli ole dia. Member juga bisa liat detail bukunya --}}
     <div>
         @foreach ($details as $detail)
             Book Name: <b>{{ $detail->title }}</b> 

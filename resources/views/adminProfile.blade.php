@@ -2,6 +2,8 @@
 
 @section('content')
 
+{{-- Bagian untuk update profile admin. Cuma bisa update nama admin. --}}
+
     <form action="/profileAdmin" method="POST">
         @method('PUT')
         @csrf

@@ -1,5 +1,6 @@
 @extends('landingAdmin')
     @section('content')
+    {{-- Bagian ini untuk reset password buat Admin. --}}
         <div class="justify-center align-center">
             <h2 class="fw-bold">Register</h2>
             <form action="/reset" method="POST">

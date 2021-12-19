@@ -1,5 +1,7 @@
 @extends('landingMember')
 @section('content')
+
+{{-- Bagian dimana member update quantity item yang ada di dalam cartnya. Cuma bisa update quantity item --}}
     
     <div>
         <form action="/update/member/detail/{{ $books->id }}" method="POST">

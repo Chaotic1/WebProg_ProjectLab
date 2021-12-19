@@ -1,6 +1,6 @@
 @extends('landingGuest')
 @section('content')
-    
+    {{-- Bagian ini untuk liat detail buku bagi guest. Guest tidak bisa apa", hanya liat doang --}}
     <div>
         <img width="200px" height="200px" src="{{ Storage::url($books->cover) }}" alt=""><br>
         Title      : {{ $books->title }} <br>
@@ -13,23 +13,4 @@
         @endforeach
         <br>
     </div>
-    {{-- <div>
-        <form action="" method="">
-            <label for="priceInsert">Quantity</label><br>
-            <input id="priceInsert" type="number" name="quantity" min="1"><br>
-            <br>
-            <button type="submit">Submit</button>
-        </form>
-    </div> --}}
-    {{-- <div>
-        <a href="/edit/{{ $books->id }}">Edit &rarr;</a>
-    </div>
-    <div>
-        <form action="/detail/{{ $books->id }}" method="POST">
-            @method('DELETE')
-            @csrf
-            <input type="submit" name="delete" value="Delete">
-        </form>
-    </div> --}}
-    
 @endsection

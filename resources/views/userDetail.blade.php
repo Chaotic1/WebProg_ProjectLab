@@ -2,6 +2,8 @@
 
 @section('content')
 
+{{-- Bagian untuk display detail user. Bisa update role, name, email --}}
+
     <form action="/manageUser/detail/{{ $users->id }}" method="POST">
         @method('PUT')
         @csrf

@@ -1,6 +1,8 @@
 @extends('landingAdmin')
 @section('content')
 
+{{-- Bagian untuk insert genre baru ke database --}}
+
 <div>
     <h3>Insert Genre</h3>
     <form action="/insertGenre" method="POST" enctype="multipart/form-data">
@@ -10,18 +12,9 @@
 
         <br>
 
-        {{-- <label>Genre</label><br>
-
-        @foreach ($genres as $genre)
-            <label for="genreInsert">{{ $genre->name }}</label>
-            <input id="genreInsert" type="checkbox" name="genre[]" value="{{ $genre->id }}">
-        @endforeach
-
-        <br> --}}
-
         <button type="submit">Add Genre</button>
     </form>
-
+    {{-- Bagian untuk display semua genre yang ada di database --}}
     <div>
         <table>
             <tr>
@@ -33,8 +26,10 @@
                 <td>
                     @foreach ($genres as $genre)
                         
-                    <a href="manageGenre/detail/{{ $genre->id }}">{{ $genre->name }}</a>
-                         
+                    <a href="manageGenre/detail/{{ $genre->id }}">{{ $genre->name }}</a> {{-- Takes you to the genre detail page --}}
+
+                    
+                         {{-- Bagian untuk delete genre dari database  --}}
                     <form action="/manageGenre/delete/{{ $genre->id }}" method="POST">
                         @method('DELETE')
                         @csrf

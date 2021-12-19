@@ -2,7 +2,7 @@
 
 @section('content')
 
-{{-- {{ Auth::user()->role }} --}}
+{{-- Search Bar untuk nyari buku --}}
 
 <div>
     <form action="/search" method="GET">
@@ -10,6 +10,8 @@
         <button type="submit">Search</button>
     </form>
 </div>
+
+{{-- Bagian untuk display buku --}}
 
 <div>
     <table>
@@ -19,7 +21,9 @@
                 <td>
                     <img width="200px" height="200px" src="{{ Storage::url($book->cover) }}" alt=""><br>
                     Title:
-                    <a href="member/detail/{{ $book->id }}">{{ $book->title }}</a><br> 
+                    <a href="member/detail/{{ $book->id }}">{{ $book->title }}</a><br>
+                    Author: {{ $book->author }} <br>
+                    Price: {{ $book->price }} <br> 
                 </td>
             </tr>           
         @endforeach

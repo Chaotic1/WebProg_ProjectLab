@@ -1,6 +1,8 @@
 @extends('landingAdmin')
 @section('content')
 
+{{-- Bagian untuk update genre detail yang ada --}}
+
 <div>
     <h3>{{ $genres->name }} Genre Detail</h3>
 
@@ -16,6 +18,8 @@
     </div>
 
     <br>
+
+    {{-- Bagian untuk kasih tau buku apa yang memiliki genre ini --}}
 
     <div>
         <table>

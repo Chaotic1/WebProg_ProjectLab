@@ -1,6 +1,6 @@
 @extends('landingMember')
 @section('content')
-    
+    {{-- Bagian ini untuk liat detail buku bagi member. Member hanya bisa masukan buku ke cart. --}}
     <div>
         <form action="/member/detail/{{ $books->id }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -14,7 +14,7 @@
             {{ $genre->name }} 
         @endforeach
         <br>
-        
+        {{-- Bagian ini member bisa masukan buku ke cart, dengan jumlah yang diinginkan --}}
             <label for="bookAmount">Quantity</label><br>
             <input id="bookAmount" type="number" name="quantity" min="1" value="1"><br>
             <br>

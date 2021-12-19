@@ -67,4 +67,12 @@ class AdminController extends Controller
         }
         return redirect()->back();
     }
+
+    public function userDelete(Request $req){
+        $user = User::find($req->id);
+
+        $user->delete();
+
+        return redirect()->back();
+    }
 }

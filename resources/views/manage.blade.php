@@ -1,6 +1,8 @@
 @extends('landingAdmin')
 @section('content')
 
+{{-- Bagian untuk insert buku baru ke database --}}
+
 <div>
     <h3>Insert Book</h3>
     <form action="/insert" method="POST" enctype="multipart/form-data">
@@ -30,6 +32,41 @@
         <br>
         <button type="submit">Submit</button>
     </form>
+</div>
+
+{{-- Bagian untuk kasi liat semua buku yang ada di database --}}
+
+<div>
+    <table>
+        <tr>
+            <th>
+                Book List
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @foreach ($books as $book)
+                    Name       : {{ $book->title }} <br>
+                    Author     : {{ $book->author }} <br>
+                    Description: {{ $book->description }} <br>
+                    Genre      :
+                        @foreach ($book->genre as $genre) 
+                            {{ $genre->name }}
+                        @endforeach
+                        <br>
+                    Price      : {{ $book->price }} <br>
+
+                    <a href="/detail/{{ $book->id }}"><button type="submit">View Details</button></a>
+                    <br>
+                    <form action="/detail/{{ $book->id }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" name="delete" value="Delete">
+                    </form>
+                @endforeach
+            </td>
+        </tr>
+    </table>
 </div>
 
 @endsection

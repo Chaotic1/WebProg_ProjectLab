@@ -2,6 +2,8 @@
 
 @section('content')
 
+{{-- Bagian dari transaction detail, dimana member bisa liat detail buku yang dibeli. --}}
+
     <img width="200px" height="200px" src="{{ Storage::url($books->cover) }}" alt=""><br>
         Title      : {{ $books->title }} <br>
         Author     : {{ $books->author }} <br>

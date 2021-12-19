@@ -2,6 +2,8 @@
 
 @section('content')
 
+{{-- Bagian untuk update profile member. Cuma bisa update nama member --}}
+
     <form action="/profileMember" method="POST">
         @method('PUT')
         @csrf
