@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CartController;
@@ -30,18 +31,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/guestpage', [PageController::class, 'guest']);
-// Route::get('/memberpage', [PageController::class, 'member']);
-// Route::get('/adminpage', [PageController::class, 'admin']);
-
-
 //Admin Stuff
-
 Route::middleware('role:admin')->group(function(){
     Route::get('/manageBook', [BookController::class, 'index']);
     Route::post('/insert', [BookController::class, 'insert']);
-    Route::get('/display', [BookController::class, 'display']);
-    Route::get('/detail/{id}', [BookController::class, 'details']);
     Route::get('/edit/{id}', [BookController::class, 'edit']);
     Route::put('/update/{id}', [BookController::class, 'update']);
     Route::delete('/detail/{id}', [BookController::class, 'delete']);
@@ -50,9 +43,19 @@ Route::middleware('role:admin')->group(function(){
     Route::get('/manageGenre/detail/{id}', [GenreController::class, 'details']);
     Route::put('/updateGenre/{id}', [GenreController::class, 'update']);
     Route::delete('/manageGenre/delete/{id}', [GenreController::class, 'delete']);
+    Route::get('/resetAdmin', [AuthController::class, 'resetIndex']);
+
+    Route::get('/display', [AdminController::class, 'display']);
+    Route::get('/detail/{id}', [AdminController::class, 'details']);
+    Route::get('/profileAdmin', [AdminController::class, 'profile']);
+    Route::put('/profileAdmin', [AdminController::class, 'profileEdit']);
+    Route::get('/manageUser', [AdminController::class, 'userManage']);
+    Route::get('/manageUser/detail/{id}', [AdminController::class, 'userDetails']);
+    Route::put('/manageUser/detail/{id}', [AdminController::class, 'userDetailsUpdate']);
 });
 
 Route::get('/logout', [AuthController::class, 'logout']);
+Route::put('/reset', [AuthController::class, 'resetPass']);
 
 //Member Stuff
 Route::middleware('role:member')->group(function(){
@@ -67,6 +70,9 @@ Route::middleware('role:member')->group(function(){
     Route::get('/history', [TransactionController::class, 'showHistory']);
     Route::get('/history/detail/{id}', [TransactionController::class, 'showHistoryDetails']);
     Route::get('/history/detail/book/{id}', [TransactionController::class, 'bookDetail']);
+    Route::get('/resetMember', [AuthController::class, 'resetIndex']);
+    Route::get('/profileMember', [MemberController::class, 'profile']);
+    Route::put('/profileMember', [MemberController::class, 'profileEdit']);
 });
 
 //Login and register stuff (Available for guest only)

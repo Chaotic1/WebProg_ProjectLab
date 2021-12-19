@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\Genre;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
@@ -45,17 +47,6 @@ class BookController extends Controller
         $book->genre()->sync($req->genre);
 
         return redirect()->back();
-    }
-
-    public function display(){
-        $books = Book::all();
-        return view('show', compact('books'));
-    }
-
-    public function details($id){
-        $books = Book::find($id);
-        $genres = Genre::all();
-        return view('detailAdmin', compact('books', 'genres'));
     }
 
     public function edit($id){
@@ -113,5 +104,11 @@ class BookController extends Controller
         $book->genre()->detach($id);
         $book->delete();
         return redirect('/display');
+    }
+
+    public function search(Request $req){
+        $keyword = $req->keyword;
+        $books = Book::where('title', 'LIKE', "%$keyword%")->get();
+        return view('show', compact('books'));
     }
 }
