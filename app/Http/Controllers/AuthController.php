@@ -55,8 +55,7 @@ class AuthController extends Controller
             if(Auth::user()->role=='admin'){
 
                 if($req->remember){
-                    Cookie::queue('email', $req->email, 300);
-                    Cookie::queue('password', $req->password, 300);
+                    Cookie::queue('email', $req->email, 10080);
                     return redirect('/display');
                 }
                 else{
@@ -66,8 +65,7 @@ class AuthController extends Controller
             elseif(Auth::user()->role=='member'){
 
                 if($req->remember){
-                    Cookie::queue('email', $req->email, 300);
-                    Cookie::queue('password', $req->password, 300);
+                    Cookie::queue('email', $req->email, 10080);
                     return redirect('/displayMember'); 
                 }
                 else{
