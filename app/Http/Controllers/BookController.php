@@ -18,23 +18,9 @@ class BookController extends Controller
     }
 
     public function insert(Request $req){
-
-        //dd($req);
-
         $file = $req->file('image');
         $imageName = time().".".$file->getClientOriginalExtension();
         Storage::putFileAs('public/images', $file, $imageName);
-
-        // $newImageName = time() . '-' . $req->name . '.' . $req->image->extension();
-        
-        // $req->image->move(public_path('images'), $newImageName);
-
-        // $book = new Book();
-        // $book->title = $req->title;
-        // $book->description = $req->description;
-        // $book->author = $req->author;
-        // $book->price = $req->price;
-        // $book->cover = 'images/'.$imageName;
 
         $book = Book::create([
             'title' => $req->title,
@@ -61,11 +47,6 @@ class BookController extends Controller
 
         $book = Book::find($req->id);
 
-        // $book->title = $req->title != null ? $req->title : $book->title;
-        // $book->description = $req->description != null ? $req->description : $book->description;
-        // $book->author = $req->author != null ? $req->author : $book->author;
-        // $book->price = $req->price != null ? $req->price : $book->price;
-
         if($file != null){
             $imageName = time().".".$file->getClientOriginalExtension();
             Storage::putFileAs('public/images', $file, $imageName);
@@ -78,7 +59,6 @@ class BookController extends Controller
                 'price' => $req->price,
                 'cover' => 'images/'.$imageName
             ]);
-            //$book->cover = 'images/'.$imageName;
         }
         else{
             $book->first()->update([
@@ -88,11 +68,7 @@ class BookController extends Controller
                 'price' => $req->price,
                 'cover' => $book->cover
             ]);
-            //$book->cover = $book->cover;
         }
-
-        //$book->save();
-
         $book->genre()->sync($req->genre);
 
         return redirect('/display');

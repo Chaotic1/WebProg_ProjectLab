@@ -33,8 +33,6 @@ class AdminController extends Controller
             'name' => $req->name
         ]);
 
-        //$user->save();
-
         return redirect()->back();
     }
 
