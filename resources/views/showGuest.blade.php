@@ -3,6 +3,13 @@
 @section('content')
 
 <div>
+    <form action="/search" method="GET">
+        <input type="search" name="keyword" placeholder="Search..." id="keyword">
+        <button type="submit">Search</button>
+    </form>
+</div>
+
+<div>
     <table>
     <tbody>
         @foreach ($books as $book)

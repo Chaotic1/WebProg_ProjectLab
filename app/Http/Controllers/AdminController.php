@@ -67,9 +67,6 @@ class AdminController extends Controller
                 'role' => $req->role
             ]);
         }
-
-        
-
         return redirect()->back();
     }
 }

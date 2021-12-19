@@ -109,6 +109,18 @@ class BookController extends Controller
     public function search(Request $req){
         $keyword = $req->keyword;
         $books = Book::where('title', 'LIKE', "%$keyword%")->get();
-        return view('show', compact('books'));
-    }
+
+        if(Auth::user() == null){
+            return view('showGuest', compact('books'));
+        }
+        elseif(Auth::user() != null){
+            if(Auth::user()->role == 'admin'){
+                return view('show', compact('books'));
+            }
+            elseif(Auth::user()->role == 'member'){
+                return view('showMember', compact('books'));
+            }
+        }
+        
+    }    
 }

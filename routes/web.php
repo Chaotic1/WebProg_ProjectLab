@@ -56,6 +56,7 @@ Route::middleware('role:admin')->group(function(){
 
 Route::get('/logout', [AuthController::class, 'logout']);
 Route::put('/reset', [AuthController::class, 'resetPass']);
+Route::get('/search', [BookController::class, 'search']);
 
 //Member Stuff
 Route::middleware('role:member')->group(function(){
