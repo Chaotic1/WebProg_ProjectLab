@@ -32,6 +32,18 @@
         <br>
         <button type="submit">Submit</button>
     </form>
+
+    @if ($errors->any())
+            <div>
+                @foreach ($errors->all() as $error)
+                    <li class="text-danger">
+                        {{ $error }}
+                    </li>
+                @endforeach
+            </div>
+    @endif
+
+
 </div>
 
 {{-- Bagian untuk kasi liat semua buku yang ada di database --}}

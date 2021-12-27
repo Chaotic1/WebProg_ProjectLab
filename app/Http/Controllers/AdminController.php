@@ -52,20 +52,37 @@ class AdminController extends Controller
 
         $user = User::find($req->id);
 
+        $req->validation([
+            'name' => 'required',
+            'email' => 'required|unique:users,email|email',
+            'role'  => 'required'
+        ]);
+
         if($user->email == $req->email){
-            $user->update([
-                'name' => $req->name,
-                'role' => $req->role
-            ]);
+            if($req->role != 'admin' || $req->role != 'member'){
+                return redirect()->back()->with('message', 'Role must be either (member) or (admin)!');
+            }
+            else{
+                $user->update([
+                    'name' => $req->name,
+                    'role' => $req->role
+                ]);
+                return redirect()->back();
+            }
         }
         else{
-            $user->update([
-                'name' => $req->name,
-                'email' => $req->email,
-                'role' => $req->role
-            ]);
-        }
-        return redirect()->back();
+            if($req->role != 'admin' || $req->role != 'member'){
+                return redirect()->back()->with('message', 'Role must be either (member) or (admin)!');
+            }
+            else{
+                $user->update([
+                    'name' => $req->name,
+                    'email' => $req->email,
+                    'role' => $req->role
+                ]);
+                return redirect()->back();
+            }
+        }    
     }
 
     public function userDelete(Request $req){

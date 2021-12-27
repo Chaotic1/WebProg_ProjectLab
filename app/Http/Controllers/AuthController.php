@@ -26,6 +26,14 @@ class AuthController extends Controller
 
     public function register(Request $req){
 
+        $validateData = $req->validate(
+            [
+                'name' => 'required',
+                'email' => 'required|email|unique:users,email',
+                'password' => 'required|min:8'
+            ]
+        );
+
         if($req->password == $req->confirm){
             $user = User::create([
                 'name' => $req->name,
@@ -38,15 +46,22 @@ class AuthController extends Controller
                 'grand_total' => 0
             ]);
 
-            return redirect()->back();
+            return redirect()->back()->with('message', 'User Registered!');
         }
 
         elseif($req->password != $req->confirm){
-            return ('Password dont match bruh');
+            return redirect()->back()->with('message', 'Password Does Not Match!');
         }
     }
 
     public function login(Request $req){
+
+        $validateData = $req->validate(
+            [
+                'email' => 'required|email',
+                'password' => 'required|min:8'
+            ]
+        );
         
         $credentials = ['email' => $req->email,
                         'password' => $req->password];

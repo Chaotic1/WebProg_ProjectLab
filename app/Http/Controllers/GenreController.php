@@ -15,6 +15,10 @@ class GenreController extends Controller
 
     public function insert(Request $req){
 
+        $req->validate([
+            'name' => 'required|unique:genres,name'
+        ]);
+
         $genre = Genre::create([
             'name' => $req->name
         ]);
@@ -45,6 +49,7 @@ class GenreController extends Controller
 
     public function delete($id){
         $genres = Genre::find($id);
+        $genres->book()->detach($id);
         $genres->delete();
         return redirect()->back();
     }

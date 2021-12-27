@@ -14,10 +14,23 @@ class BookController extends Controller
     public function index(){
         $genres = Genre::all();
         $books = Book::all();
+
         return view('manage', compact(['books', 'genres']));
     }
 
     public function insert(Request $req){
+
+        $req->validate(
+            [
+                'title' => 'required',
+                'description' => 'required',
+                'author' => 'required',
+                'price' => 'required|integer',
+                'image' => 'required|mimes:png,jpg,jpeg|max:5048',
+                'genre' => 'required|exists:genres,id'            
+            ]
+        );
+
         $file = $req->file('image');
         $imageName = time().".".$file->getClientOriginalExtension();
         Storage::putFileAs('public/images', $file, $imageName);
@@ -48,6 +61,17 @@ class BookController extends Controller
         $book = Book::find($req->id);
 
         if($file != null){
+            $req->validate(
+                [
+                    'title' => 'required',
+                    'description' => 'required',
+                    'author' => 'required',
+                    'price' => 'required|integer',
+                    'genre' => 'required|exists:genres,id',
+                    'image' => 'required|mimes:png,jpg,jpeg|max:5048'         
+                ]
+            );
+
             $imageName = time().".".$file->getClientOriginalExtension();
             Storage::putFileAs('public/images', $file, $imageName);
 
@@ -61,6 +85,17 @@ class BookController extends Controller
             ]);
         }
         else{
+
+            $req->validate(
+                [
+                    'title' => 'required',
+                    'description' => 'required',
+                    'author' => 'required',
+                    'price' => 'required|integer',
+                    'genre' => 'required|exists:genres,id'       
+                ]
+            );
+
             $book->first()->update([
                 'title' => $req->title,
                 'description' => $req->description,
@@ -71,7 +106,7 @@ class BookController extends Controller
         }
         $book->genre()->sync($req->genre);
 
-        return redirect('/display');
+        return redirect('/display')->with('message', 'Book Updated!');
     }
 
     public function delete($id){

@@ -14,7 +14,7 @@ class CartSeeder extends Seeder
      */
     public function run()
     {
-        DB::tables('carts')->insert([
+        DB::table('carts')->insert([
             'id' => 1,
             'user_id' => 2,
             'grand_total' => 0

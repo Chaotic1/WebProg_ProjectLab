@@ -32,6 +32,17 @@
         <br>
         <button type="submit">Update</button>
     </form>
+
+    @if ($errors->any())
+            <div>
+                @foreach ($errors->all() as $error)
+                    <li class="text-danger">
+                        {{ $error }}
+                    </li>
+                @endforeach
+            </div>
+    @endif
+
 </div>
 
 @endsection

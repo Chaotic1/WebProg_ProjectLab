@@ -20,15 +20,41 @@ class GenreSeeder extends Seeder
                 "id" => 1,
                 "name" => 'action'
             ],
-
             [
                 "id" => 2,
                 "name" => 'horror'
             ],
-
             [
                 "id" => 3,
                 "name" => 'comedy'
+            ],
+            [
+                "id" => 4,
+                "name" => 'thriller'
+            ],
+            [
+                "id" => 5,
+                "name" => 'children'
+            ],
+            [
+                "id" => 6,
+                "name" => 'mystery'
+            ],
+            [
+                "id" => 7,
+                "name" => 'education'
+            ],
+            [
+                "id" => 8,
+                "name" => 'sci-fi'
+            ],
+            [
+                "id" => 9,
+                "name" => 'fiction'
+            ],
+            [
+                "id" => 10,
+                "name" => 'fantasy'
             ]
 
         ]);
