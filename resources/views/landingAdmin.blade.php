@@ -47,7 +47,7 @@
     </div>
 
     {{-- footer --}}
-    <nav class="navbar navbar-dark bg-primary fixed-bottom">
+    <nav class="navbar navbar-dark bg-primary fixed-bottom p-0">
         <div class="container-fluid text-white">
             <p>
                 @php
