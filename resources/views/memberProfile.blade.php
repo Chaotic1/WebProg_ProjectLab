@@ -14,4 +14,24 @@
         <button type="submit">Update</button>
     </form>
 
+    <div>
+        @if(session()->has('message'))
+            <div class="alert alert-success">
+                {{ session()->get('message') }}
+            </div>
+        @endif
+    </div>
+
+    <div>
+        @if ($errors->any())
+            <div>
+                @foreach ($errors->all() as $error)
+                    <li class="text-danger">
+                        {{ $error }}
+                    </li>
+                @endforeach
+            </div>
+        @endif
+    </div>
+
 @endsection

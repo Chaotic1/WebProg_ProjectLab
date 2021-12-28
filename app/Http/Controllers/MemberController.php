@@ -34,12 +34,14 @@ class MemberController extends Controller
     public function profileEdit(Request $req){
         $user = User::where('id', '=', Auth::user()->id);
 
+        $req->validate([
+            'name' => 'required'
+        ]);
+
         $user->update([
             'name' => $req->name
         ]);
 
-        //$user->save();
-
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Profile Updated!');
     }
 }

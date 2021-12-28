@@ -29,11 +29,15 @@ class AdminController extends Controller
     public function profileEdit(Request $req){
         $user = User::where('id', '=', Auth::user()->id);
 
+        $req->validate([
+            'name' => 'required'
+        ]);
+
         $user->update([
             'name' => $req->name
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Profile Updated!');
     }
 
     public function userManage(){
