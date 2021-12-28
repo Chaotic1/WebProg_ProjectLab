@@ -21,8 +21,8 @@ class TransactionController extends Controller
 
         $headers = HeaderTransactions::find($id);
         $details = DetailTransactions::all();
-
-        return view('historyDetail', compact('details', 'headers'));
+    
+        return view('historyDetail', compact('headers', 'details'));
     }
 
     public function bookDetail($id){

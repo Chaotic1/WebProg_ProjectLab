@@ -29,6 +29,7 @@
         </thead>
         <tbody>
             @foreach ($details as $detail)
+                @if ($detail->header_id == $headers->id)
                 <tr>
                     <td>{{ $detail->title }}</td>
                     <td>{{ $detail->author }}</td>
@@ -39,10 +40,18 @@
                         <a href="/history/detail/book/{{ $detail->book_id }}"><button type="submit">View Item</button></a>
                     </td>
                 </tr>
+                @endif
             @endforeach
         </tbody>
     </table>
     
-    <h4>Grand Total: {{ $detail->grand_total }}</h4>
+    @foreach ($details as $detail)
+
+        @if ($detail->header_id == $headers->id)
+            <h4>Grand Total: {{ $detail->grand_total }}</h4>
+            @break
+        @endif
+        
+    @endforeach
 
 @endsection

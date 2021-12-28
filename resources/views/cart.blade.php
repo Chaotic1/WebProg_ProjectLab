@@ -42,6 +42,9 @@
                 </tr>
             </thead>
             <tbody>
+                @php
+                    $flag = 0
+                @endphp
                 @foreach ($cart_details as $item)
                     <tr>
                         <td>{{ $item->book->title }}</td>
@@ -58,15 +61,31 @@
                             <a href="/update/member/detail/{{ $item->book->id }}"><button type="submit">View Item</button></a>
                         </td>
                     </tr>
+                    @php
+                        $flag = 1
+                    @endphp
                 @endforeach
             </tbody>
         </table>
         <h5>Grand Total: {{ $carts->grand_total }}</h5>
-        <div>
-            <form action="/checkout" method="POST" enctype="multipart/form-data">
-                @csrf
-                <button type="submit">Checkout</button>
-            </form>
-        </div>
+        @if ($flag == 0)
+            No items yet in the cart....
+        @else
+            <div>
+                <form action="/checkout" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <button type="submit">Checkout</button>
+                </form>
+            </div>
+        @endif
     </div>
+
+    <div>
+        @if(session()->has('message'))
+            <div class="alert alert-success">
+                {{ session()->get('message') }}
+            </div>
+        @endif
+    </div>
+
 @endsection

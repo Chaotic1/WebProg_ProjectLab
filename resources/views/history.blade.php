@@ -23,11 +23,13 @@
         </thead>
         <tbody>
             @foreach ($headers as $header)
-                <td>{{ $header->uuid }}</td>
-                <td>{{ $header->created_at }}</td>
-                <td>
-                    <a href="/history/detail/{{ $header->id }}"><button type="submit">View Details</button></a>
-                </td>
+                <tr>
+                    <td>{{ $header->uuid }}</td>
+                    <td>{{ $header->created_at }}</td>
+                    <td>
+                        <a href="/history/detail/{{ $header->id }}"><button type="submit">View Details</button></a>
+                    </td>
+                </tr>
             @endforeach
         </tbody>
     </table>

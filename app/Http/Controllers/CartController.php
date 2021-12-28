@@ -25,7 +25,6 @@ class CartController extends Controller
         foreach ($cart_details as $items){
             $carts->grand_total += $items->subtotal;
         }
-
         return view('cart', compact(['carts', 'users', 'cart_details']));
 
     }
@@ -78,14 +77,14 @@ class CartController extends Controller
             }
         }
 
-        return redirect('/cart');
+        return redirect('/cart')->with('message', 'Cart Updated!');
 
     }
 
     public function delete($id){
         $cart = CartDetail::find($id);
         $cart->delete();
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Item deleted from cart!');
     }
 
     public function checkout(){
@@ -94,11 +93,11 @@ class CartController extends Controller
         $carts = $users->cart;
         $cart_details = $carts->cartDetail;
 
-        $uuid = Str::uuid()->toString();
-
         foreach ($cart_details as $items){
             $carts->grand_total += $items->subtotal;
         }
+
+        $uuid = Str::uuid()->toString();
 
         $header = HeaderTransactions::create([
             'user_id' => $users->id,
@@ -123,7 +122,7 @@ class CartController extends Controller
 
         CartDetail::where('cart_id', $carts->id)->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Thank you for shopping. We hope you shop again soon!');
 
     }
 }
