@@ -14,7 +14,34 @@
         <label for="userRole">Role</label><br>
         <input id="userRole" type="text" name="role" value="{{ $users->role }}"><br>
 
-        <button type="submmit">Update</button>
+        <button type="submit">Update</button>
     </form>
+
+
+    <div>
+        @if(session()->has('error'))
+            <div class="alert alert-danger">
+                {{ session()->get('error') }}
+            </div>
+        @endif
+
+        @if(session()->has('success'))
+            <div class="alert alert-success">
+                {{ session()->get('success') }}
+            </div>
+        @endif
+    </div>
+
+    <div>
+        @if ($errors->any())
+            <div>
+                @foreach ($errors->all() as $error)
+                    <li class="text-danger">
+                        {{ $error }}
+                    </li>
+                @endforeach
+            </div>
+        @endif
+    </div>
 
 @endsection

@@ -25,4 +25,32 @@
             <button type="submit" class="btn btn-primary">Register</button>
         </form>
     </div>
+
+    <div>
+        @if(session()->has('message'))
+            <div class="alert alert-success">
+                {{ session()->get('message') }}
+            </div>
+        @endif
+
+        @if(session()->has('error'))
+            <div class="alert alert-danger">
+                {{ session()->get('error') }}
+            </div>
+        @endif
+
+    </div>
+
+    <div>
+        @if ($errors->any())
+            <div>
+                @foreach ($errors->all() as $error)
+                    <li class="text-danger">
+                        {{ $error }}
+                    </li>
+                @endforeach
+            </div>
+        @endif
+    </div>
+
 @endsection

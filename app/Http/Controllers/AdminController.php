@@ -52,35 +52,44 @@ class AdminController extends Controller
 
         $user = User::find($req->id);
 
-        $req->validation([
-            'name' => 'required',
-            'email' => 'required|unique:users,email|email',
-            'role'  => 'required'
-        ]);
-
         if($user->email == $req->email){
-            if($req->role != 'admin' || $req->role != 'member'){
-                return redirect()->back()->with('message', 'Role must be either (member) or (admin)!');
-            }
-            else{
+
+            $req->validate([
+                'name' => 'required',
+                'role'  => 'required'
+            ]);
+
+            if($req->role == "member" or $req->role == "admin"){
+
                 $user->update([
                     'name' => $req->name,
                     'role' => $req->role
                 ]);
-                return redirect()->back();
+                return redirect()->back()->with('success', 'User Updated');
+                
+            }
+            else{
+                return redirect()->back()->with('error', 'Role must be either (member) or (admin)!');
             }
         }
         else{
-            if($req->role != 'admin' || $req->role != 'member'){
-                return redirect()->back()->with('message', 'Role must be either (member) or (admin)!');
-            }
-            else{
+
+            $req->validate([
+                'name' => 'required',
+                'email' => 'required|unique:users,email|email',
+                'role' => 'required'
+            ]);
+
+            if($req->role == 'member' or $req->role == 'admin'){
                 $user->update([
                     'name' => $req->name,
                     'email' => $req->email,
                     'role' => $req->role
                 ]);
-                return redirect()->back();
+                return redirect()->back()->with('success', 'User Updated');
+            }
+            else{
+                return redirect()->back()->with('error', 'Role must be either (member) or (admin)!');
             }
         }    
     }
@@ -90,6 +99,6 @@ class AdminController extends Controller
 
         $user->delete();
 
-        return redirect()->back();
+        return redirect('/manageUser')->with('message', 'User Deleted');
     }
 }

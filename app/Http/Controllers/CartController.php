@@ -52,7 +52,7 @@ class CartController extends Controller
             update(["quantity" => $item["quantity"] + $req->quantity, "subtotal" => $books->price * ($item["quantity"] + $req->quantity)]);
         }
 
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Item added to cart!');
     }
 
     public function update(Request $req){

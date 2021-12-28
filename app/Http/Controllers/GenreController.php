@@ -25,7 +25,7 @@ class GenreController extends Controller
 
         $genre->book()->sync($req->book);
 
-        return redirect()->back();
+        return redirect()->back()->with('message', 'New genre added!');
     }
 
     public function details($id){
@@ -44,13 +44,13 @@ class GenreController extends Controller
             $genre->name = $genre->name;
         }
         
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Genre Updated!');
     }
 
     public function delete($id){
         $genres = Genre::find($id);
         $genres->book()->detach($id);
         $genres->delete();
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Genre Deleted. Please update book if there is no genre.');
     }
 }

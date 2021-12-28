@@ -40,7 +40,7 @@
                     <h5 class="card-title">{{ $book->title }}</h5>
                     <p class="card-text">{{ $book->author }}</p>
                     <p class="card-text">Price: {{ $book->price }}</p>
-                    <a href="member/detail/{{ $book->id }}" class="btn btn-primary">Details</a>
+                    <a href="guest/detail/{{ $book->id }}" class="btn btn-primary">Details</a>
                 </div>
             </div>
         @endforeach

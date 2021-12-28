@@ -13,7 +13,7 @@
         <a href="/manageUser/detail/{{ $user->id }}"><button type="submit">View Details</button></a><br>
 
         @if ($user->role == 'member')
-            <form action="/manageUser/delete/{{ $user->id }}" method="POST">
+            <form action="/manageUser/detail/{{ $user->id }}" method="POST">
                 @method('DELETE')
                 @csrf
 
@@ -25,5 +25,13 @@
         <br>
         
     @endforeach
+
+    <div>
+        @if(session()->has('message'))
+            <div class="alert alert-success">
+                {{ session()->get('message') }}
+            </div>
+        @endif
+    </div>
 
 @endsection

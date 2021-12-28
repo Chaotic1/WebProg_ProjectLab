@@ -11,7 +11,7 @@
     {{-- Navbar --}}
     <nav class="navbar navbar-expand-md navbar-dark bg-primary">
         <div class="container-fluid">
-            <a href="#" class="navbar-brand align-center">Book Store</a>
+            <a href="/displayGuest" class="navbar-brand align-center">Book Store</a>
             <div class="justify-content-end align-center">
                 <ul class="navbar-nav ">
                     <li class="nav-item">

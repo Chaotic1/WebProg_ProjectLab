@@ -10,7 +10,7 @@
     {{-- Navbar --}}
     <nav class="navbar navbar-expand-md navbar-dark bg-primary">
         <div class="container-fluid">
-            <a href="#" class="navbar-brand align-center">Book Store</a>
+            <a href="/display" class="navbar-brand align-center">Book Store</a>
             <div class="justify-content-end align-center px-4">
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ">
@@ -19,8 +19,9 @@
                                 <span class="text-white">Manage</span>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarManageLink">
-                                <li><a href="#" class="dropdown-item">Book</a></li>
-                                <li><a href="#" class="dropdown-item">Genre</a></li>
+                                <li><a href="/manageBook" class="dropdown-item">Book</a></li>
+                                <li><a href="/manageGenre" class="dropdown-item">Genre</a></li>
+                                <li><a href="/manageUser" class="dropdown-item">Users</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -28,10 +29,11 @@
                                 <span class="text-white">Hello, {{ Auth::user()->name }}</span>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarAccLink">
-                                <li><a href="#" class="dropdown-item">Change Password</a></li>
+                                <li><a href="/resetAdmin" class="dropdown-item">Change Password</a></li>
                                 <form action="/logout" method="GET">
                                     <li><a href="/logout" class="dropdown-item">Logout</a></li>
                                 </form>
+                                <li><a href="/profileAdmin" class="dropdown-item">Profile</a></li>
                             </ul>
                         </li>
                     </ul>

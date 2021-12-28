@@ -11,7 +11,7 @@
     {{-- Navbar --}}
     <nav class="navbar navbar-expand-md navbar-dark bg-primary">
         <div class="container-fluid">
-            <a href="#" class="navbar-brand align-center">Book Store</a>
+            <a href="/displayMember" class="navbar-brand align-center">Book Store</a>
             <div class="justify-content-end align-center">
                 <ul class="navbar-nav ">
                     <li class="nav-item">
@@ -29,10 +29,11 @@
                             <span class="text-white">Hello, {{ Auth::user()->name }}</span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarAccLink">
-                            <li><a href="#" class="dropdown-item">Change<br>Password</a></li>
+                            <li><a href="/resetMember" class="dropdown-item">Change<br>Password</a></li>
                             <form action="/logout" method="GET">
                                 <li><a href="/logout" class="dropdown-item">Logout</a></li>
                             </form>
+                            <li><a href="/profileMember" class="dropdown-item">Profile</a></li>
                         </ul>
                     </li>
                 </ul>

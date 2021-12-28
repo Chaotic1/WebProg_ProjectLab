@@ -30,7 +30,8 @@ class AuthController extends Controller
             [
                 'name' => 'required',
                 'email' => 'required|email|unique:users,email',
-                'password' => 'required|min:8'
+                'password' => 'required|min:8',
+                'confirm' => 'required'
             ]
         );
 
@@ -50,7 +51,7 @@ class AuthController extends Controller
         }
 
         elseif($req->password != $req->confirm){
-            return redirect()->back()->with('message', 'Password Does Not Match!');
+            return redirect()->back()->with('error', 'Password Does Not Match!');
         }
     }
 
@@ -105,6 +106,13 @@ class AuthController extends Controller
     }
 
     public function resetPass(Request $req){
+
+        $req->validate([
+            'oldPass' => 'required',
+            'newPass' => 'required|min:8',
+            'newConfirm' => 'required|min:8'
+        ]);
+
         $user = User::where('id', '=', Auth::user()->id)->first();
 
         if(!(Hash::check($req->oldPass, Auth::user()->password))){
@@ -115,9 +123,14 @@ class AuthController extends Controller
             return redirect()->back()->with("error", "New Password cannot match Old Password");
         }
 
-        $user->password = bcrypt($req->newPass);
-        $user->save();
-        return redirect()->back()->with("success", "Password Changed!");
+        if($req->newPass == $req->newConfirm){
+            $user->password = bcrypt($req->newPass);
+            $user->save();
+            return redirect()->back()->with("success", "Password Changed!");
+        }
+        else{
+            return redirect()->back()->with("error", 'New Password does not match New Confirm');
+        }
     }
 
     public function logout(){

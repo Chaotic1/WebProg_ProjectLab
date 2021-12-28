@@ -45,7 +45,7 @@ class BookController extends Controller
 
         $book->genre()->sync($req->genre);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'New Book Added!');
     }
 
     public function edit($id){

@@ -52,7 +52,7 @@ Route::middleware('role:admin')->group(function(){
     Route::get('/manageUser', [AdminController::class, 'userManage']);
     Route::get('/manageUser/detail/{id}', [AdminController::class, 'userDetails']);
     Route::put('/manageUser/detail/{id}', [AdminController::class, 'userDetailsUpdate']);
-    Route::delete('/manageUser/delete/{$id}', [AdminController::class, 'userDelete']);
+    Route::delete('/manageUser/detail/{id}', [AdminController::class, 'userDelete']);
 });
 
 Route::get('/logout', [AuthController::class, 'logout']);
