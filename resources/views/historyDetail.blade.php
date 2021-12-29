@@ -37,7 +37,7 @@
                     <td>{{ $detail->quantity }}</td>
                     <td>{{ $detail->price * $detail->quantity }}</td>
                     <td>
-                        <a href="/history/detail/book/{{ $detail->book_id }}"><button type="submit">View Item</button></a>
+                        <a href="/history/detail/book/{{ $detail->book_id }}"><button type="submit" class="btn btn-secondary">View Item</button></a>
                     </td>
                 </tr>
                 @endif

@@ -4,9 +4,9 @@
 {{-- Search Bar untuk nyari buku --}}
 
 <div class="d-flex justify-content-center p-3">
-    <form action="/search" method="GET">
-        <input type="search" name="keyword" placeholder="Search..." id="keyword">
-        <button type="submit">Search</button>
+    <form action="/search" method="GET" class="row">
+        <input type="search" name="keyword" placeholder="Search..." id="keyword" class="col gx-5">
+        <button type="submit" class="btn btn-primary btn-sm col-auto">Search</button>
     </form>
 </div>
 

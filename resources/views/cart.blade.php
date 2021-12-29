@@ -52,13 +52,13 @@
                         <td>{{ $item->book->price }}</td>
                         <td>{{ $item->quantity }}</td>
                         <td>{{ $item->subtotal }}</td>
-                        <td>
-                            <form action="/cart/delete/{{ $item->id }}" method="POST">
+                        <td class="row">
+                            <form action="/cart/delete/{{ $item->id }}" method="POST" class="col-auto">
                                 @method('DELETE')
                                 @csrf
-                                <button type="submit">Delete Item</button>
+                                <button type="submit" class="btn btn-danger ">Delete Item</button>
                             </form>
-                            <a href="/update/member/detail/{{ $item->book->id }}"><button type="submit">View Item</button></a>
+                            <a href="/update/member/detail/{{ $item->book->id }}" class="col"><button type="submit" class="btn btn-secondary">View Item</button></a>
                         </td>
                     </tr>
                     @php

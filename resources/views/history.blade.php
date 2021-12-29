@@ -27,7 +27,7 @@
                     <td>{{ $header->uuid }}</td>
                     <td>{{ $header->created_at }}</td>
                     <td>
-                        <a href="/history/detail/{{ $header->id }}"><button type="submit">View Details</button></a>
+                        <a href="/history/detail/{{ $header->id }}"><button type="submit" class="btn btn-primary">View Details</button></a>
                     </td>
                 </tr>
             @endforeach

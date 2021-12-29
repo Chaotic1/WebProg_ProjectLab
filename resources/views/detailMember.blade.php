@@ -41,7 +41,7 @@
                     <br>
                     <label for="bookAmount">Quantity</label><br>
                     <input id="bookAmount" type="number" name="quantity" min="1" value="1">
-                    <button type="submit">Submit</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
         </div>
