@@ -4,7 +4,7 @@
 
 {{-- Bagian untuk display detail user. Bisa update role, name, email --}}
 
-    <form action="/manageUser/detail/{{ $users->id }}" method="POST">
+    {{-- <form action="/manageUser/detail/{{ $users->id }}" method="POST">
         @method('PUT')
         @csrf
         <label for="userName">Name</label><br>
@@ -15,7 +15,31 @@
         <input id="userRole" type="text" name="role" value="{{ $users->role }}"><br>
 
         <button type="submit">Update</button>
-    </form>
+    </form> --}}
+
+    <div class="card m-4">
+        <div class="card-body">
+            <h5 class="card-title">User Detail</h5>
+            <form action="/manageUser/detail/{{ $users->id }}" method="POST" class="row g-3">
+                @method('PUT')
+                @csrf
+                <div class="input-group">
+                    <span class="input-group-text" id="name">Name</span>
+                    <input type="text" name="name" class="form-control" value="{{ $users->name }}" aria-describedby="name">
+                </div> <br>
+                <div class="input-group">
+                    <span class="input-group-text" id="email">Email</span>
+                    <input type="text" name="email" class="form-control" value="{{ $users->email }}" aria-describedby="email">
+                </div> <br>
+                <div class="input-group">
+                    <span class="input-group-text" id="role">Role</span>
+                    <input type="text" name="role" class="form-control" value="{{ $users->role }}" aria-describedby="role">
+                </div> <br>
+        
+                <button type="submit" class="btn btn-primary col-auto">Update</button>
+            </form>
+        </div>
+    </div>
 
 
     <div>
