@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class GuestController extends Controller
 {
     public function index(){
-        $books = Book::all();
+        $books = Book::paginate(5);
         return view('showGuest', compact('books'));
     }
 

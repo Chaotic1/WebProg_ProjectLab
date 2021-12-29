@@ -20,7 +20,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="/history" class="nav-link">
                             <span class="text-white">View Transaction History</span>
                         </a>
                     </li>
@@ -29,7 +29,6 @@
                             <span class="text-white">Hello, {{ Auth::user()->name }}</span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarAccLink">
-                            <li><a href="/resetMember" class="dropdown-item">Change<br>Password</a></li>
                             <form action="/logout" method="GET">
                                 <li><a href="/logout" class="dropdown-item">Logout</a></li>
                             </form>

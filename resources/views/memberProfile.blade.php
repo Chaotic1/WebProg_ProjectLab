@@ -17,7 +17,7 @@
     <div class="card m-4">
         <div class="card-body">
             <h5 class="card-title">Profile</h5>
-            <form action="/profileAdmin" method="POST">
+            <form action="/profileMember" method="POST">
                 @method("PUT")
                 @csrf
                 Name        : <input type="text" name="name" id="name" value="{{ Auth::user()->name }}"> <br>
@@ -26,6 +26,8 @@
                 
                 <button type="submit" class="btn btn-primary">Update</button>
             </form>
+            <br>
+            <a href="/resetMember"><button type="submit" class="btn btn-primary"> Change Password </button></a>
         </div>
     </div>
 

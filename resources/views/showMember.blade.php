@@ -4,11 +4,13 @@
 
 {{-- Search Bar untuk nyari buku --}}
 
-<div class="d-flex justify-content-center p-3">
+<div class="d-flex justify-content-center p-3 gap-2">
     <form action="/search" method="GET" class="row">
         <input type="search" name="keyword" placeholder="Search..." id="keyword" class="col gx-5"> 
         <button type="submit" class="btn btn-primary btn-sm col-auto">Search</button>
     </form>
+    <br>
+    <a href="/displayMember"><button type="submit" class="btn btn-primary btn-sm col-auto">Clear Filter</button></a>
 </div>
 
 {{-- Bagian untuk display buku --}}
@@ -46,7 +48,9 @@
         @endforeach
     </div>
 </div>
-
-
+<br>
+<div class="d-flex justify-content-center">
+    {{$books->links('pagination::bootstrap-4')}}
+</div>
 
 @endsection

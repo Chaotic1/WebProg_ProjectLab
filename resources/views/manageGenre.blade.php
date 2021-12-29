@@ -51,11 +51,29 @@
             @csrf
             <div class="input-group">
                 <span class="input-group-text" id="genre">Genre</span>
-                <input type="text" class="form-control" placeholder="Genre" aria-describedby="genre">
+                <input type="text" name="name" class="form-control" placeholder="Genre" aria-describedby="genre">
             </div> <br>
             <button type="submit" class="btn btn-primary">Add Genre</button>
         </form>
     </div>
+</div>
+
+<div>
+    @if(session()->has('message'))
+            <div class="alert alert-success">
+                {{ session()->get('message') }}
+            </div>
+    @endif
+    
+    @if ($errors->any())
+            <div>
+                @foreach ($errors->all() as $error)
+                    <li class="text-danger">
+                        {{ $error }}
+                    </li>
+                @endforeach
+            </div>
+    @endif
 </div>
 
 <h5>Genre List</h5>
@@ -82,23 +100,5 @@
         @endforeach
     </tbody>
 </table>
-
-    <div>
-        @if(session()->has('message'))
-                <div class="alert alert-success">
-                    {{ session()->get('message') }}
-                </div>
-        @endif
-        
-        @if ($errors->any())
-                <div>
-                    @foreach ($errors->all() as $error)
-                        <li class="text-danger">
-                            {{ $error }}
-                        </li>
-                    @endforeach
-                </div>
-        @endif
-    </div>
     
 @endsection

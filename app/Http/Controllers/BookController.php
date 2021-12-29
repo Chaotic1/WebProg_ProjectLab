@@ -76,7 +76,7 @@ class BookController extends Controller
             Storage::putFileAs('public/images', $file, $imageName);
 
             Storage::delete('public/'.$book->cover);
-            $book->first()->update([
+            $book->update([
                 'title' => $req->title,
                 'description' => $req->description,
                 'author' => $req->author,
@@ -96,7 +96,7 @@ class BookController extends Controller
                 ]
             );
 
-            $book->first()->update([
+            $book->update([
                 'title' => $req->title,
                 'description' => $req->description,
                 'author' => $req->author,
@@ -106,7 +106,7 @@ class BookController extends Controller
         }
         $book->genre()->sync($req->genre);
 
-        return redirect('/display')->with('message', 'Book Updated!');
+        return redirect('/detail/'.$book->id)->with('message', 'Book Updated!');
     }
 
     public function delete($id){
@@ -119,7 +119,7 @@ class BookController extends Controller
 
     public function search(Request $req){
         $keyword = $req->keyword;
-        $books = Book::where('title', 'LIKE', "%$keyword%")->get();
+        $books = Book::where('title', 'LIKE', "%$keyword%")->paginate(5);
 
         if(Auth::user() == null){
             return view('showGuest', compact('books'));

@@ -26,6 +26,8 @@
                 
                 <button type="submit" class="btn btn-primary">Update</button>
             </form>
+            <br>
+            <a href="/resetAdmin"><button type="submit" class="btn btn-primary"> Change Password </button></a>
         </div>
     </div>
 

@@ -12,7 +12,7 @@ class AdminController extends Controller
 {
 
     public function display(){
-        $books = Book::all();
+        $books = Book::paginate(5);
         return view('show', compact('books'));
     }
 

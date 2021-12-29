@@ -11,16 +11,16 @@
     {{-- Navbar --}}
     <nav class="navbar navbar-expand-md navbar-dark bg-primary">
         <div class="container-fluid">
-            <a href="/displayGuest" class="navbar-brand align-center">Book Store</a>
+            <a href="/" class="navbar-brand align-center">Book Store</a>
             <div class="justify-content-end align-center">
                 <ul class="navbar-nav ">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="/register" class="nav-link">
                             <span class="text-white">Register</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="/login" class="nav-link">
                             <span class="text-white">Login</span>
                         </a>
                     </li>

@@ -36,14 +36,19 @@ class GenreController extends Controller
 
     public function update(Request $req){
         $genre = Genre::find($req->id);
-        $genre->first()->update([
-            'name' => $req->name
-        ]);
-
+        
         if($genre->name == $req->name){
             $genre->name = $genre->name;
         }
-        
+        else{
+            $req->validate([
+                'name' => 'required|unique:genres,name'
+            ]);
+
+            $genre->update([
+                'name' => $req->name
+            ]);
+        }    
         return redirect()->back()->with('message', 'Genre Updated!');
     }
 

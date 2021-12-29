@@ -29,7 +29,6 @@
                                 <span class="text-white">Hello, {{ Auth::user()->name }}</span>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarAccLink">
-                                <li><a href="/resetAdmin" class="dropdown-item">Change Password</a></li>
                                 <form action="/logout" method="GET">
                                     <li><a href="/logout" class="dropdown-item">Logout</a></li>
                                 </form>

@@ -28,7 +28,7 @@ class TransactionController extends Controller
     public function bookDetail($id){
         $books = Book::find($id);
         $genres = Genre::all();
-        $details = DetailTransactions::find($id);
+        $details = DetailTransactions::all();
 
         return view('bookHistoryDetail', compact(['books', 'genres', 'details']));        
     }

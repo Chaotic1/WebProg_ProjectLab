@@ -94,15 +94,15 @@
                 @csrf
                 <div class="input-group">
                     <span class="input-group-text" id="title">Title</span>
-                    <input type="text" class="form-control" placeholder="Title" aria-describedby="title">
+                    <input type="text" class="form-control" placeholder="Title" name="title" aria-describedby="title">
                 </div> <br>
                 <div class="input-group">
                     <span class="input-group-text" id="author">Author</span>
-                    <input type="text" class="form-control" placeholder="Author" aria-describedby="author">
+                    <input type="text" class="form-control" placeholder="Author" name="author" aria-describedby="author">
                 </div> <br>
                 <div class="input-group">
                     <span class="input-group-text">Description</span>
-                    <textarea class="form-control"></textarea>
+                    <textarea class="form-control" name="description"></textarea>
                 </div> <br>
                 <p class="card-text">Cover</p>
                 <div class="input-group">
@@ -123,7 +123,7 @@
                 <br>
                 <div class="input-group">
                     <span class="input-group-text" id="price">Price</span>
-                    <input id="price" type="number" name="Price" min="1">
+                    <input id="price" type="number" name="price" min="1">
                 </div>
                 <br>
                 <button class="btn btn-primary" type="submit">Submit</button>

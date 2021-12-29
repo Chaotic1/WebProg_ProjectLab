@@ -19,6 +19,7 @@
 
         <div class="row justify-content-center p-5">
             <div class="col-4">
+                <h3>{{ $books->title }} Book Detail</h3>
                 <img width="300px" height="400px" src="{{ Storage::url($books->cover) }}" alt="">
             </div>
             <div class="col-6">
@@ -30,8 +31,7 @@
                 @foreach ($books->genre as $genre) 
                     {{ $genre->name }} 
                 @endforeach
-                <br>
-                Quantity   : {{ $details->quantity }}
+                <br>            
             </div>
         </div>
     

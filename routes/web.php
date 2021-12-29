@@ -27,9 +27,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 //Admin Stuff
 Route::middleware('role:admin')->group(function(){
@@ -82,5 +82,5 @@ Route::get('/login', [AuthController::class, 'loginPage'])->middleware('guest');
 Route::post('/login', [AuthController::class, 'login'])->middleware('guest');
 Route::get('/register', [AuthController::class, 'registerPage'])->middleware('guest');
 Route::post('/register', [AuthController::class, 'register'])->middleware('guest');
-Route::get('/displayGuest', [GuestController::class, 'index'])->middleware('guest');
+Route::get('/', [GuestController::class, 'index'])->middleware('guest');
 Route::get('/guest/detail/{id}', [GuestController::class, 'details'])->middleware('guest');
