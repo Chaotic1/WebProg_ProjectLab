@@ -69,7 +69,10 @@
             </div>
             <br>
             <div class="container">
-                <p class="card-text">Genre</p>
+                @foreach ($books->genre as $genre)
+                    <p class="card-text">Genre (Previous Genre : {{ $genre->name }})</p>
+                @endforeach
+                
                 <div class="row">
                     @foreach ($genres as $genre)
                         <div class="col-2">
