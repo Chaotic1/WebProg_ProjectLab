@@ -20,7 +20,7 @@ class GenreController extends Controller
         ]);
 
         $genre = Genre::create([
-            'name' => $req->name
+            'name' => ucfirst($req->name)
         ]);
 
         $genre->book()->sync($req->book);
@@ -46,7 +46,7 @@ class GenreController extends Controller
             ]);
 
             $genre->update([
-                'name' => $req->name
+                'name' => ucfirst($req->name)
             ]);
         }    
         return redirect()->back()->with('message', 'Genre Updated!');

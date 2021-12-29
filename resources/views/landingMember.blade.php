@@ -54,6 +54,11 @@
                     echo "Current Date and Time: " . date('l') . ", " . date('m-d-Y');
                 @endphp
             </p>
+            <p>
+                @php
+                    echo "Copyright &copy " . date("Y") . " Binus Store ";
+                @endphp
+            </p>
         </div>
     </nav>
 

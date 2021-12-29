@@ -39,7 +39,7 @@
             @foreach ($users as $user)
                 <tr>
                     <td>{{ $user->name }}</td>
-                    <td>{{ $user->enail }}</td>
+                    <td>{{ $user->email }}</td>
                     <td>{{ $user->role }}</td>
                     <td class="row">
                         <a href="/manageUser/detail/{{ $user->id }}" class="col-auto"><button type="submit" class="btn btn-secondary ">View Details</button></a>
