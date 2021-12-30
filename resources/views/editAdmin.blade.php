@@ -63,22 +63,24 @@
                 <span class="input-group-text">Description</span>
                 <textarea class="form-control" name="description">{{  $books->description  }}</textarea>
             </div> <br>
-            <p class="card-text">Cover</p>
+            <p class="card-text">Cover:</p>
             <div class="input-group">
                 <input id="coverInsert" type="file" name="image">
             </div>
             <br>
             <div class="container">
-                Genre (Previous Genre :
-                @foreach ($books->genre as $genre)
-                    {{ $genre->name }}
-                @endforeach
-                )
+                Genre:
                 <div class="row">
                     @foreach ($genres as $genre)
                         <div class="col-2">
                             <label for="genreInsert">{{ $genre->name }}</label>
-                            <input id="genreInsert" type="checkbox" name="genre[]" value="{{ $genre->id }}">
+                            <input id="genreInsert" type="checkbox" name="genre[]"
+
+                                @foreach ($books->genre as $book_genre)
+                                    {{ old('genre', $book_genre->name) === $genre->name ? 'checked' : '' }}
+                                @endforeach
+                            
+                            >
                         </div>
                     @endforeach
                 </div>
