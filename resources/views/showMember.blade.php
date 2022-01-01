@@ -2,8 +2,6 @@
 
 @section('content')
 
-{{-- Search Bar untuk nyari buku --}}
-
 <div class="d-flex justify-content-center p-3 gap-2">
     <form action="/search" method="GET" class="row">
         <input type="search" name="keyword" placeholder="Search..." id="keyword" class="col gx-5"> 
@@ -12,26 +10,6 @@
     <br>
     <a href="/displayMember"><button type="submit" class="btn btn-primary btn-sm col-auto">Clear Filter</button></a>
 </div>
-
-{{-- Bagian untuk display buku --}}
-
-{{-- <div>
-    <table>
-    <tbody>
-        @foreach ($books as $book)
-            <tr>
-                <td>
-                    <img width="200px" height="200px" src="{{ Storage::url($book->cover) }}" alt=""><br>
-                    Title:
-                    <a href="member/detail/{{ $book->id }}">{{ $book->title }}</a><br>
-                    Author: {{ $book->author }} <br>
-                    Price: {{ $book->price }} <br> 
-                </td>
-            </tr>           
-        @endforeach
-    </tbody>
-    </table>
-</div> --}}
 
 <div class="container-fluid">
     <div class="row gap-4 justify-content-center">

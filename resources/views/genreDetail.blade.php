@@ -1,20 +1,7 @@
 @extends('landingAdmin')
 @section('content')
 
-{{-- Bagian untuk update genre detail yang ada --}}
-
     <h3>{{ $genres->name }} Genre Detail</h3>
-
-    {{-- <div>
-        <form action="/updateGenre/{{ $genres->id }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            @method('PUT')
-            <label for="updateGenre">Name</label><br>
-            <input id="updateGenre" type="text" name="name" value="{{ $genres->name }}"><br>
-
-            <button type="submit">Update</button>
-        </form>
-    </div> --}}
 
     <div class="card m-4">
         <div class="card-body">
@@ -50,8 +37,6 @@
     </div>
 
     <br>
-
-    {{-- Bagian untuk kasih tau buku apa yang memiliki genre ini --}}
 
     <div>
         <table class="table">
