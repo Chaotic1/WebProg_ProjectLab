@@ -30,7 +30,7 @@
                     @foreach ($genres as $genre)
                         <div class="col-2">
                             <label for="genreInsert">{{ $genre->name }}</label>
-                            <input id="genreInsert" type="checkbox" name="genre[]"
+                            <input id="genreInsert" type="checkbox" name="genre[]" value="{{ $genre->id }}"
 
                                 @foreach ($books->genre as $book_genre)
                                     {{ old('genre', $book_genre->name) === $genre->name ? 'checked' : '' }}
